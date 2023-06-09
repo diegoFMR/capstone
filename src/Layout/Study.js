@@ -46,7 +46,7 @@ function Study({hide}) {
         <h1>Study:</h1><h1>{deck.name}</h1> 
         <div>
           Card {index} of {deck.cards ? deck.cards.length: 1}
-          {deck.cards? deck.cards.length <2? <p>Not enough cards</p>:"1er else":"Segundo else" }
+          {deck.cards? deck.cards.length <2? <p>Not enough cards</p>:"":"" }
           <p>{ deck.cards ?(isFront && deck.cards[index-1] ?deck.cards[index-1].front:deck.cards[index-1]?deck.cards[index-1].back:"" ): "" }</p>
           <button onClick={(e)=>onClickFlip(e)}> Flip </button>
           <button onClick={(e)=>onClickNext(e)}> {hideS? "":'Next'} </button>

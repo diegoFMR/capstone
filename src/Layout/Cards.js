@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 function Card({cards}) {
 
     const history = useHistory();
-
+    console.log(cards)
     function onClickEdit(deckId){
         history.push(`/decks/${deckId}/edit`);
     }
@@ -23,7 +23,7 @@ function Card({cards}) {
                 <div key={c.id ? c.id: 452 }>
                     <textarea value={c.front} onChange={()=>{}}/>
                     <p>{c.back}</p>
-                    <div onClick={()=>onClickEdit(c.id)}>Edit </div>
+                    <div onClick={()=>onClickEdit(c.deckId)}>Edit </div>
                     <div onClick={()=>onClickDelete(c.id)}>Delete </div>
                 </div>
             ))

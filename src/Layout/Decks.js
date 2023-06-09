@@ -27,9 +27,9 @@ function Decks({decks}) {
                     <h1>{d.name}</h1>
                     <p>{d.description}</p>
                     <div>{d.cards?d.cards.length:""} cards</div>
-                    <div onClick={()=>onClickView(d.id)}>View </div>
-                    <div onClick={()=>onClickStudy(d.id)}>Study </div>
-                    <div onClick={()=>onClickDelete(d.id)}>Delete </div>
+                    <div className="btn containerr" onClick={()=>onClickView(d.id)}>View </div>
+                    <div className="btn study" onClick={()=>onClickStudy(d.id)}>Study </div>
+                    <div className="btn study red" onClick={()=>onClickDelete(d.id)}>Delete </div>
                 </div>
             ))
         }

@@ -9,9 +9,9 @@ function AddBtn() {
   }
 
   return (
-      <div className="">
-        <span className="" onClick={handleClick}>+</span>
-        <p className="">Create Deck</p>
+      <div className="btn containerr" onClick={handleClick}>
+        <span className="create-btn" >+</span>
+        <span className="">Create Deck</span>
       </div>
   );
 }

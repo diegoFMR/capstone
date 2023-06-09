@@ -5,7 +5,8 @@ import Home from "./Home";
 import Study from "./Study";
 import Deck from "./Deck";
 import DeckForm from "./DeckForm";
-import CardForm from "./CardForm";
+import CardPage from "./CardPage";
+import CardEdit from "./CardEdit";
 import { Route, Switch } from "react-router-dom";
 
 function Layout() {
@@ -32,10 +33,10 @@ function Layout() {
           </Route>
 
           <Route exact path="/decks/:deckId/cards/new">
-            <CardForm />
+            <CardPage />
           </Route>
           <Route exact path="/decks/:deckId/cards/:cardId/edit">
-            <Deck />
+            <CardEdit />
           </Route>
 
           <Route path="*">
