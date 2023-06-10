@@ -1,5 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+import { deleteDeck } from "../utils/api";
 
 function Decks({decks}) {
 
@@ -9,9 +10,10 @@ function Decks({decks}) {
         history.push(`/decks/${deckId}`);
     }
 
-    function onClickDelete(){
+    async function onClickDelete(id){
         if(window.confirm("Delete this deck?")){
-            console.log("fired. good")
+            const response = await deleteDeck(id);
+            alert("The deck has been deleted sucessfully!");
         }
     }
 

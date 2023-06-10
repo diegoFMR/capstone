@@ -1,17 +1,23 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+import { deleteCard } from "../utils/api";
 
 function Card({cards}) {
 
     const history = useHistory();
-    console.log(cards)
-    function onClickEdit(deckId){
-        history.push(`/decks/${deckId}/edit`);
+    
+    function onClickEdit(deckId, id){
+        history.push(`/decks/${deckId}/cards/${id}/edit`);
     }
 
-    function onClickDelete(){
+    async function onClickDelete(id){
         if(window.confirm("Delete this deck?")){
-            console.log("fired. good")
+            try{
+                const resp = await deleteCard(id);
+                alert("Deleted sucessfully");
+            }catch(err){
+                console.log(err)
+            }
         }
     }
 
@@ -23,8 +29,8 @@ function Card({cards}) {
                 <div key={c.id ? c.id: 452 }>
                     <textarea value={c.front} onChange={()=>{}}/>
                     <p>{c.back}</p>
-                    <div onClick={()=>onClickEdit(c.deckId)}>Edit </div>
-                    <div onClick={()=>onClickDelete(c.id)}>Delete </div>
+                    <div className="btn study" onClick={()=>onClickEdit(c.deckId, c.id)}>Edit </div>
+                    <div className="btn red" onClick={()=>onClickDelete(c.id)}>Delete </div>
                 </div>
             ))
         }

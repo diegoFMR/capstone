@@ -22,6 +22,8 @@ function Study({hide}) {
 
   const onClickNext = (e)=>{
     e.preventDefault();
+    setIsFront(true);
+    setIndex(index+1);
   }
 
     const onClick = ()=>{
