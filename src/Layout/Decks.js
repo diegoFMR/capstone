@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { deleteDeck } from "../utils/api";
 
-function Decks({decks}) {
+function Decks({decks, getDecks}) {
 
     const history = useHistory();
 
@@ -14,6 +14,7 @@ function Decks({decks}) {
         if(window.confirm("Delete this deck?")){
             const response = await deleteDeck(id);
             alert("The deck has been deleted sucessfully!");
+            getDecks();
         }
     }
 

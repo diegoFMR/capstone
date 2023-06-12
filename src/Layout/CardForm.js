@@ -1,5 +1,5 @@
 import React,{useEffect, useState } from "react";
-import {useParams} from 'react-router-dom'
+import {useParams, useHistory} from 'react-router-dom'
 // import AddBtn from "./AddBtn";
 import {createCard, readDeck, updateCard, readCard} from "../utils/api";
 // import Decks from "./Decks.js";
@@ -9,6 +9,7 @@ function CardForm() {
     const { deckId, cardId} = useParams();
     //Callback for useEffect
     const [card, setCard] = useState({});
+    const history = useHistory();
 
     const onSubmit = async (e)=>{
         e.preventDefault();
@@ -20,6 +21,7 @@ function CardForm() {
                 const response = await updateCard(card);
                 alert("Information updated sucessfully!");
             }
+            history.push('/decks/'+deckId);
         }catch(er){
             console.log(er);
         }

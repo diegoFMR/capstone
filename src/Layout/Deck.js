@@ -13,25 +13,12 @@ function Deck() {
     //const to show index of the card showing
 
 
-  const onClickFlip = (e)=>{
-    e.preventDefault();
-    setIsFront(!isFront);
-  }
-
-  const onClickNext = (e)=>{
-    e.preventDefault();
-    // if(index == deck.cards.length){
-      
-    //   if(window.confirm("Restart cards?")){
-    //     setIndex(1);  
-    //   }else{
-    //     history.push("/");
-    //   }
-
-    // }else{
-    //   setIndex(index+1);
-    // }
-  }
+  async function getDecks(){
+    if(deckId){
+        const response = await readDeck(deckId);
+        setDeck(response);
+    }
+}
 
     const onClick = ()=>{
       history.push("/");
@@ -53,7 +40,7 @@ function Deck() {
       <div className="">
         <h2>{deck.name}</h2>
         <h2>{deck.description}</h2>
-        <Cards cards={deck.cards} />
+        <Cards cards={deck.cards} getDecks={getDecks} />
       </div>
   );
 }

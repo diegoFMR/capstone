@@ -7,6 +7,10 @@ function Home() {
     const [decks, setDecks] = useState([]);
 
     //Callback for useEffect
+    async function getDecks(){    
+      const response = await listDecks();
+      setDecks(response);
+    }
     
     //[] parameter is for componentDidMount
     useEffect( ()=>{
@@ -21,7 +25,7 @@ function Home() {
   return (
       <div className="">
         <AddBtn />
-        <Decks decks={decks}/>
+        <Decks decks={decks} getDecks={getDecks} />
       </div>
   );
 }

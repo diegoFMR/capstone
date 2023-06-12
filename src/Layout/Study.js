@@ -26,8 +26,9 @@ function Study({hide}) {
     setIndex(index+1);
   }
 
-    const onClick = ()=>{
-      history.push("/");
+    const onClick = (e)=>{
+      e.preventDefault();
+      history.push(`/decks/${deckId}/cards/new`);
     }
 
     //Callback for useEffect
@@ -51,7 +52,8 @@ function Study({hide}) {
           {deck.cards? deck.cards.length <2? <p>Not enough cards</p>:"":"" }
           <p>{ deck.cards ?(isFront && deck.cards[index-1] ?deck.cards[index-1].front:deck.cards[index-1]?deck.cards[index-1].back:"" ): "" }</p>
           <button onClick={(e)=>onClickFlip(e)}> Flip </button>
-          <button onClick={(e)=>onClickNext(e)}> {hideS? "":'Next'} </button>
+          <button onClick={(e)=>onClickNext(e)}> {hideS? "":'Next'} </button><br/>
+          <button onClick={(e)=>onClick(e)}> Add card </button>
         </div>
       </div>
   );

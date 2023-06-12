@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { deleteCard } from "../utils/api";
 
-function Card({cards}) {
+function Card({cards,getDecks}) {
 
     const history = useHistory();
     
@@ -11,10 +11,11 @@ function Card({cards}) {
     }
 
     async function onClickDelete(id){
-        if(window.confirm("Delete this deck?")){
+        if(window.confirm("Delete this card?")){
             try{
                 const resp = await deleteCard(id);
                 alert("Deleted sucessfully");
+                getDecks();
             }catch(err){
                 console.log(err)
             }
